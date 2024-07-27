@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Code Documentation</title>
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f8f8f8;
+    }
+
+    header {
+      background-color: #333;
+      color: #fff;
+      padding: 20px 0;
+      text-align: center;
+    }
+
+    nav ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li {
+      display: inline;
+      margin-right: 20px;
+    }
+
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    main {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 0 20px;
+    }
+
+    section {
+      margin-bottom: 40px;
+    }
+
+    h1,
+    h2,
+    h3 {
+      color: #333;
+      text-align: center;
+    }
+
+    h1 {
+      color: #fff;
+      /* Changed color to white */
+    }
+
+    p,
+    ul {
+      color: #555;
+    }
+
+    img {
+      display: block;
+      margin: 20px auto;
+      max-width: 100%;
+    }
+
+    pre {
+      background-color: #f5f5f5;
+      padding: 10px;
+      border-radius: 5px;
+      overflow-x: auto;
+    }
+
+    pre code {
+      display: block;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    li {
+      margin-bottom: 10px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    table,
+    th,
+    td {
+      border: 1px solid black;
+    }
+
+    th,
+    td {
+      padding: 8px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Introduction</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="introduction.html">Introduction</a></li>
+        <li><a href="algorithm-documentation.html">Comparison with Biological RNA</a></li>
+        <li><a href="code-documentation.html">Code Documentation</a></li>
+        <li><a href="analysis.html">Analysis</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <section>
+      <h2>Problem</h2>
+      <p>The prediction of RNA secondary structure using dynamic programming is a classic problem in computational
+        biology,
+        involving the identification of how RNA sequences fold based on their nucleotide interactions. The main goal is
+        to find
+        the most energetically favorable configuration, typically represented by the maximum number of base pairings
+        under
+        certain constraints.</p>
+      <h3>Pseudocode</h3>
+      <pre>
+        <code>
+          Function isPair(Base a, Base b)
+          Return (a == 'A' and b == 'U') or (a == 'U' and b == 'A') or
+                 (a == 'C' and b == 'G') or (a == 'G' and b == 'C')
+        
+          Function traceback(DP Matrix, RNA String, Start i, End j, Structure List)
+            If i >= j
+              Return
+          
+            If DP[i][j] equals DP[i][j - 1]
+              Call traceback(DP, RNA, i, j - 1, structure)
+            Else
+              For t from i to j
+                If DP[i][j] equals DP[i][t - 1] + DP[t + 1][j - 1] + 1 and isPair(RNA[t - 1], RNA[j - 1])
+                  Add pair (t, j) to structure
+                  Call traceback(DP, RNA, i, t - 1, structure)
+                  Call traceback(DP, RNA, t + 1, j - 1, structure)
+                  Return
+          
+          Function computeOptimalStructure(RNA String)
+            n = Length of RNA
+            Initialize DP Matrix with dimensions (n + 1) x (n + 1) to 0
+            Initialize Structure List
+          
+            For i from 0 to n
+              For j from i to min(i + 4, n)
+                Set DP[i][j] to 0
+          
+            For k from 5 to n
+              For i from 1 to n - k
+                j = i + k
+                Set DP[i][j] to DP[i][j - 1]
+                For t from i to j - 4
+                  If isPair(RNA[t - 1], RNA[j - 1])
+                    Set DP[i][j] to max(DP[i][j], DP[i][t - 1] + DP[t + 1][j - 1] + 1)
+          
+            Call traceback(DP, RNA, 1, n, structure)
+            Return structure  
+        
+        </code>
+      </pre>
+
+      <div>
+        <p><strong>bool isPair(char a, char b)</strong></p>
+        <p>Arguments:<br>
+          char a (base 1)<br>
+          char b (base 2)</p>
+        <p>Return Type: bool (Sign of the difference in distances)</p>
+      </div>
+
+      <div>
+        <p><strong>traceback</strong></p>
+        <p>Arguments:<br>
+          vector<vector<int>> DP: The dynamic programming matrix.<br>
+            string RNA: The RNA sequence.<br>
+            int i: Starting index for traceback.<br>
+            int j: Ending index for traceback.<br>
+            vector structure: List to store the base pairs.</p>
+        <p>Return Type: Nothing (It modifies the structure list in-place)</p>
+      </div>
+
+      <div>
+        <p><strong>computeOptimalStructure</strong></p>
+        <p>Arguments:<br>
+          string RNA</p>
+        <p>Return Type : vector containing the pairs of indices that form the optimal structure.</p>
+      </div>
+    </section>
+    </main>
+    </body>
+    
+    </html>

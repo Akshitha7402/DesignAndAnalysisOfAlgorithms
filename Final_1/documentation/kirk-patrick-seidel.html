@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kirk Patrick Seidel Algorithm</title>
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f8f8f8;
+    }
+
+    header {
+      background-color: #333;
+      color: #fff;
+      padding: 20px 0;
+      text-align: center;
+    }
+
+    nav ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li {
+      display: inline;
+      margin-right: 20px;
+    }
+
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    main {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 0 20px;
+    }
+
+    section {
+      margin-bottom: 40px;
+    }
+
+    h1,
+    h2,
+    h3 {
+      color: #333;
+      text-align: center;
+    }
+
+    h1 {
+      color: #fff;
+      /* Changed color to white */
+    }
+
+    p,
+    ul {
+      color: #555;
+    }
+
+    img {
+      display: block;
+      margin: 20px auto;
+      max-width: 100%;
+    }
+
+    pre {
+      background-color: #f5f5f5;
+      padding: 10px;
+      border-radius: 5px;
+      overflow-x: auto;
+    }
+
+    pre code {
+      display: block;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    li {
+      margin-bottom: 10px;
+    }
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+    th, td {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+    th {
+        background-color: #f2f2f2;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Kirk Patrick Seidel Algorithm</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="code-documentation.html">Code Documentation</a></li>
+        <li><a href="algorithm-documentation.html">Algorithm Documentation</a></li>
+        <li><a href="jarvis-march.html">Jarvis March Algorithm</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <section>
+      <h2>Algorithm Description</h2>
+      <p>The Kirk Patrick Seidel algorithm is a divide-and-conquer algorithm for finding the convex hull of a set of
+        points in the plane. It works by dividing the points into two subsets based on their x-coordinates, finding the
+        convex hulls of the two subsets recursively, and then merging the hulls to form the final convex hull.</p>
+      <h3>Pseudocode</h3>
+      <pre>
+        <code>
+        Define class Point with properties x and y
+          Constructor initializes x and y
+        
+        Define function ConvexHull with parameters points and n
+          Initialize an empty list convexHull
+          Identify extreme points (plmin, pumin, pumax, plmax) among points
+          For each point in points
+            Update extreme points based on x and y comparisons
+        
+          Calculate upper tangent points using getUpperT with pumin and pumax
+          Calculate lower tangent points using getLowerT with plmin and plmax
+          Construct upper hull with upperHull using pumin, pumax, and upper tangent points
+          Construct lower hull with lowerHull using plmin, plmax, and lower tangent points
+          Combine upper and lower hulls into convexHull
+          Sort convexHull points in clockwise order
+          Remove duplicate points from convexHull
+          Return convexHull
+        
+        Define function computeSlope with parameters a and b
+          Calculate and return slope between points a and b
+        
+        Define function comparePoints with parameters a and b
+          Compare two points based on their x and y values
+        
+        Define function abss with parameter a
+          Return absolute value of a
+        
+        Define function getPivotValue with parameters arr, low, and high
+          If segment length ≤ 5, find median directly from sorted segment
+          Else, recursively calculate median of medians for partitioning
+        
+        Define function partition with parameters arr, low, and high
+          Partition arr around a pivot value, return partition index
+        
+        Define function findMedianUtil with parameters arr, k, low, and high
+          Find median of arr using partition-based selection
+        
+        Define function findMedian with parameter arr
+          Return median value of arr
+        
+        Define function getUpperT with parameters pumin, pumax, and points
+          Determine points forming the upper tangent to the convex hull
+        
+        Define function getLowerT with parameters plmin, plmax, and points
+          Determine points forming the lower tangent to the convex hull
+        
+        Define function upperHull with parameters pmin, pmax, and upperT
+          Construct and return points forming the upper hull
+        
+        Define function lowerHull with parameters pmin, pmax, and lowerT
+          Construct and return points forming the lower hull
+        
+        Define function sortPointsClockwise with parameter points
+          Sort points in clockwise order around their centroid
+        
+        Define function findCentroid with parameter points
+          Calculate and return the centroid of a set of points
+        
+        Define function calculateAngle with parameters centroid and point
+          Calculate and return the angle of a point with respect to centroid
+        
+        Define function removeDuplicatePoints with parameter hull
+          Remove duplicate points from hull and return unique points
+        </code>
+      </pre>
+    <p>
+      <strong>ConvexHull(points, n)</strong><br>
+      Arguments: points (Array of Point), n (Number)<br>
+      Returns: Array of Point
+    </p>
+
+    <p>
+      <strong>computeSlope(a, b)</strong><br>
+      Arguments: a (Point), b (Point)<br>
+      Returns: Number (Slope)<br>
+      Time Complexity: O(1)
+    </p>
+
+    <p><strong>comparePoints(a, b)</strong><br>
+    Arguments: a (Point), b (Point)<br>
+    Returns: Boolean <br>
+    Time Complexity: O(1)
+    </p>
+
+    <p><strong>abss(a)</strong><br>
+    Arguments: a (Number)<br>
+    Returns: Number (Absolute value)<br>
+    Time Complexity: O(1)
+    </p>
+
+    <p><strong>getPivotValue(arr, low, high)</strong><br>
+    Arguments: arr (Array of Numbers), low (Number), high (Number)<br>
+    Returns: Number (Median value)<br>
+    Time Complexity: O(n)
+    </p>
+
+    <p><strong>partition(arr, low, high)</strong><br>
+    Arguments: arr (Array of Numbers), low (Number), high (Number)<br>
+    Returns: Number (Partition index)<br>
+    Time Complexity: O(n)
+    </p>
+
+    <p><strong>findMedianUtil(arr, k, low, high)</strong><br>
+    Arguments: arr (Array of Numbers), k (Number), low (Number), high (Number)<br>
+    Returns: Number (Median value)<br>
+    Time Complexity: O(n)
+    </p>
+
+    <p><strong>findMedian(arr)</strong><br>
+    Arguments: arr (Array of Numbers)<br>
+    Returns: Number (Median value)</p>
+
+    <p><strong>getUpperT(pumin, pumax, points)</strong><br>
+    Arguments: pumin (Point), pumax (Point), points (Array of Point)<br>
+    Returns: Array of Point<br>
+    Time Complexity: O(n)
+    </p>
+
+    <p><strong>getLowerT(plmin, plmax, points)</strong><br>
+    Arguments: plmin (Point), plmax (Point), points (Array of Point)<br>
+    Returns: Array of Point<br>
+    Time Complexity: O(n)
+    </p>
+
+    <p><strong>upperHull(pmin, pmax, upperT)</strong><br>
+    Arguments: pmin (Point), pmax (Point), upperT (Array of Point)<br>
+    Returns: Array of Point<br>
+    Time Complexity: O(n log n)
+    </p>
+
+    <p><strong>lowerHull(pmin, pmax, lowerT)</strong><br>
+    Arguments: pmin (Point), pmax (Point), lowerT (Array of Point)<br>
+    Returns: Array of Point<br>
+    Time Complexity: O(n log n)
+    </p>
+
+    <p><strong>sortPointsClockwise(points)</strong><br>
+      Arguments: Array of Point<br>
+      Returns: Nothing, modifies points array<br>
+      Time Complexity: O(n log n)
+    </p>
+
+    <p><strong>findCentroid(points)</strong><br>
+      Arguments: Array of Point<br>
+      Returns: Point (the centroid)<br>
+      Time Complexity: O(n)
+    </p>
+
+    <p><strong>calculateAngle(centroid, point)</strong><br>
+      Arguments: 2 point objects<br>
+      Returns: Number(the angle in radians wrt positive x axis) (the centroid)<br>
+      Time Complexity: O(1)
+    </p>
+
+    <p><strong>removeDuplicatePoints(hull)</strong><br>
+      Arguments: Array of Point<br>
+      Returns: Array of Point<br>
+      Time Complexity: O(n)
+    </p>
+
+    </section>
+    <section>
+      <h2>Time and Space Complexity</h2>
+      <p>The time complexity of the Kirk Patrick Seidel algorithm is O(n log n), where n is the number of points. This
+        is because the algorithm sorts the points and then performs a divide-and-conquer approach, which has a time
+        complexity of O(n log n).</p>
+      <p>The space complexity of the algorithm is O(n), as it requires additional space to store the points on the upper
+        and lower hulls, as well as the final convex hull.</p>
+      <h2>As I increase the dots...</h2>
+            
+      <table>
+        <tr>
+            <th>Number of Points</th>
+            <th>Time Complexity</th>
+            <th>Comments</th>
+        </tr>
+        <tr>
+            <td>10</td>
+            <td>O(n log n)</td>
+            <td>Sorting dominates, recursion and median doesn't contribute much</td>
+        </tr>
+        <tr>
+            <td>100</td>
+            <td>O(n log n)</td>
+            <td>Sorting dominates, recursive partitioning and median selection also scale linearly with the number of points.</td>
+        </tr>
+        <tr>
+            <td>1,000</td>
+            <td>O(n log n)</td>
+            <td>Sorting dominates, recursive partitioning and median selection may lead to slightly increased overhead</td>
+        </tr>
+        <tr>
+            <td>10,000</td>
+            <td>O(n log n)</td>
+            <td>Sorting dominates, recursive partitioning and median selection may become more significant, potentially leading to a slight increase in overall time complexity.</td>
+        </tr>
+        <tr>
+            <td>100,000 and beyond</td>
+            <td>O(n log n)</td>
+            <td>Sorting dominates, slight increase in overhead for large datasets.</td>
+        </tr>
+    </table>
+    <h2>Worst-case time complexity Recurrence Relation</h2>
+    <img src="worstcase.png" alt="Example Image">
+    </section>
+    <section>
+      <h2>Advantages and Disadvantages</h2>
+      <h3>Advantages</h3>
+      <ul>
+        <li>More efficient than the Jarvis March algorithm for larger datasets, with a time complexity of O(n log n).
+        </li>
+        <li>Works well for both clustered and non-clustered data.</li>
+        <li>Can be parallelized to further improve performance.</li>
+      </ul>
+      <h3>Disadvantages</h3>
+      <ul>
+        <li>More complex to understand and implement compared to the Jarvis March algorithm.</li>
+        <li>Requires sorting the input points, which can take additional time and space.</li>
+        <li>Less efficient for small datasets, where the overhead of sorting and divide-and-conquer approach may
+          outweigh the benefits.</li>
+      </ul>
+    </section>
+  </main>
+</body>
+<section>
+  <p>Akshitha Bajjuri 2020B2A71973H </p>
+  <p>Vidhi Sajnani 2020B1A71625H </p>
+  <p>Siva Naga Rajdhanush Lella 2020B3A70545H</p>
+  <p>Ramakrishna C 2020B5A72287H</p>
+  <p>Sanaatan R 2021A7PS2902H</p>
+</section>
+</html>

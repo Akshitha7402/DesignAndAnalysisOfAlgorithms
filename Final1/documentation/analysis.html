@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Analysis</title>
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f8f8f8;
+    }
+
+    header {
+      background-color: #333;
+      color: #fff;
+      padding: 20px 0;
+      text-align: center;
+    }
+
+    nav ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li {
+      display: inline;
+      margin-right: 20px;
+    }
+
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    main {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 0 20px;
+    }
+
+    section {
+      margin-bottom: 40px;
+    }
+
+    h1,
+    h2,
+    h3 {
+      color: #333;
+      text-align: center;
+    }
+
+    h1 {
+      color: #fff;
+      /* Changed color to white */
+    }
+
+    p,
+    ul {
+      color: #555;
+    }
+
+    img {
+      display: block;
+      margin: 20px auto;
+      max-width: 100%;
+    }
+
+    pre {
+      background-color: #f5f5f5;
+      padding: 10px;
+      border-radius: 5px;
+      overflow-x: auto;
+    }
+
+    pre code {
+      display: block;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    li {
+      margin-bottom: 10px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    table,
+    th,
+    td {
+      border: 1px solid black;
+    }
+
+    th,
+    td {
+      padding: 8px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Analysis</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="introduction.html">Introduction</a></li>
+        <li><a href="algorithm-documentation.html">Comparison with Biological RNA</a></li>
+        <li><a href="code-documentation.html">Code Documentation</a></li>
+        <li><a href="analysis.html">Analysis</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+      <section>
+      <h2>Complexity Analysis</h2>
+      <p>
+        <br><strong>Time Complexity:</strong> O(n^3), there are O(n^2) subproblems
+      </p>
+      <p>
+        <br><strong>Space Complexity:</strong> O(n^2): storage requirements of the dynamic programming matrix that tracks the optimal number of pairings for subsequences of the RNA.
+      </p>
+      <h3><strong>Why O(n^3)?</strong></h3>
+      <p>
+        <strong>Length of the RNA Sequence (n):</strong> Complexity increases cubically with RNA length due to n x n DP matrix.<br><br>
+        <strong>Filling the DP Matrix: </strong> Each DP cell's calculation depends on values computed beforehand, maintaining a computation order.<br><br>
+        <strong>Nested Loops: </strong> Three nested loops iterate over the sequence, resulting in O(n^3) complexity due to evaluation of potential pairings.<br><br>
+        <strong>Recurrence Relation: </strong> DP cells are updated by taking the maximum of unpaired bases and optimal pairings.<br><br>
+        <strong>Overall Time Complexity: </strong> Governed by O(n^3) due to nested loops iterating over the DP matrix.<br><br>
+        <strong>Traceback Function: </strong> Polynomial time, usually quicker than DP matrix fill; traces only optimal solutions.
+      </p>
+      <img src="analysis.jpeg" alt="Analysis Image">
+    </section>
+    </main>
+    </body>
+    
+    </html>

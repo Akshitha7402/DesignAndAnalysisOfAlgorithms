@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Introduction</title>
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f8f8f8;
+    }
+
+    header {
+      background-color: #333;
+      color: #fff;
+      padding: 20px 0;
+      text-align: center;
+    }
+
+    nav ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li {
+      display: inline;
+      margin-right: 20px;
+    }
+
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    main {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 0 20px;
+    }
+
+    section {
+      margin-bottom: 40px;
+    }
+
+    h1,
+    h2,
+    h3 {
+      color: #333;
+      text-align: center;
+    }
+
+    h1 {
+      color: #fff;
+      /* Changed color to white */
+    }
+
+    p,
+    ul {
+      color: #555;
+    }
+
+    img {
+      display: block;
+      margin: 20px auto;
+      max-width: 100%;
+    }
+
+    pre {
+      background-color: #f5f5f5;
+      padding: 10px;
+      border-radius: 5px;
+      overflow-x: auto;
+    }
+
+    pre code {
+      display: block;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    li {
+      margin-bottom: 10px;
+    }
+    table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Introduction</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="introduction.html">Introduction</a></li>
+        <li><a href="algorithm-documentation.html">Comparison with Biological RNA</a></li>
+        <li><a href="code-documentation.html">Code Documentation</a></li>
+        <li><a href="analysis.html">Analysis</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <section>
+      <h2>Problem</h2>
+      <p>The prediction of RNA secondary structure using dynamic programming is a classic problem in computational biology,
+      involving the identification of how RNA sequences fold based on their nucleotide interactions. The main goal is to find
+      the most energetically favorable configuration, typically represented by the maximum number of base pairings under
+      certain constraints.</p>
+           
+    </section>
+    <section>
+      <h2>Dynamic Programming</h2>
+      <p>The RNA Folding algorithm builds on the principles established by the Nussinov algorithm, which focuses solely on
+      sequence information to optimize RNA structures by maximizing the number of base pairings.
+      The algorithm uses a recursive approach to solve for optimal substructures incrementally, appending bases one at a time until certain conditions are met. However, it also imposes specific rules to improve the accuracy of its secondary structure predictions:
+      <ul>
+        <li><strong>Hairpin Loop Constraints:</strong> Hairpin loops in the predicted structure must consist of at least four bases to avoid energetically unfavorable sharp turns.</li>
+        <li><strong>Exclusion of Base Triples:</strong> The algorithm ensures that any two base pairs, (i, j) and (i’, j’), must be either identical or have no overlapping indices, effectively eliminating the formation of base triples.</li>
+        <li><strong>Prohibition of Pseudoknots:</strong> Structures where one base pair is nested within another but connected in a crossing manner (pseudoknots) are not allowed, maintaining a simpler, planar structure.</li>
+      </ul>
+       
+      <p>These rules help SSFold produce more realistic and stable RNA secondary structures by considering both the quantitative
+      and spatial aspects of molecular folding.
+        The RNA secondary structure prediction problem involves determining the optimal way an RNA sequence can fold to maximize
+      the number of complementary base pairs (A-U and G-C). The sequence folds back on itself, and the structure can be
+      thought of as a set of non-crossing base pairs. The RNA secondary structure prediction problem involves determining the optimal way an RNA sequence can fold to maximize the number of complementary base pairs (A-U and G-C). The sequence folds back on itself, and the structure can be thought of as a set of non-crossing base pairs.</p>
+    </section>
+    </main>
+    </body>
+
+   

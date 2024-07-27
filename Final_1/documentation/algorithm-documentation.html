@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Algorithm Documentation</title>
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f8f8f8;
+      color: #333;
+    }
+    header {
+      background-color: #333;
+      color: #fff;
+      padding: 20px 0;
+      text-align: center;
+    }
+    nav ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+    nav ul li {
+      display: inline;
+      margin-right: 20px;
+    }
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+    }
+    main {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 0 20px;
+    }
+    section {
+      margin-bottom: 40px;
+    }
+    h1, h2, h3 {
+      text-align: center;
+    }
+    p {
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Algorithm Documentation</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="code-documentation.html">Code Documentation</a></li>
+        <li><a href="jarvis-march.html">Jarvis March Algorithm</a></li>
+        <li><a href="kirk-patrick-seidel.html">Kirk Patrick Seidel Algorithm</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <section>
+      <h2>Convex Hull Problem</h2>
+      <p>The convex hull of a set of points is the smallest convex polygon that contains all the points in the set. A convex polygon is a polygon where every line segment connecting any two points inside the polygon lies entirely within the polygon.</p>
+      <p>Finding the convex hull of a set of points has various applications in fields such as computational geometry, computer graphics, and pattern recognition. For example, it can be used to determine the smallest convex container for a set of objects, or to simplify the shape of a complex polygon by approximating it with its convex hull.</p>
+    </section>
+    <section>
+      <h2>Algorithm Overview</h2>
+      <h3>Jarvis March Algorithm</h3>
+      <p>The Jarvis March algorithm, also known as the Gift Wrapping algorithm, is a simple and efficient algorithm for finding the convex hull of a set of points in the plane. It has a time complexity of O(nh), where n is the number of points and h is the number of points on the convex hull.</p>
+      <p>The algorithm works by iteratively wrapping the points with a convex polygon, starting from the leftmost point and moving in a counterclockwise direction. It has the advantage of being easy to understand and implement, but it can be less efficient for highly clustered or collinear data.</p>
+      <h3>Kirk Patrick Seidel Algorithm</h3>
+      <p>The Kirk Patrick Seidel algorithm is a divide-and-conquer algorithm for finding the convex hull of a set of points in the plane. It has a time complexity of O(n log n), where n is the number of points.</p>
+      <p>The algorithm works by dividing the points into two subsets based on their x-coordinates, finding the convex hulls of the two subsets recursively, and then merging the hulls to form the final convex hull. It is generally more efficient than the Jarvis March algorithm for larger sets of points, but it is more complex to implement.</p>
+    </section>
+  </main>
+</body>
+<section>
+  <p>Akshitha Bajjuri 2020B2A71973H </p>
+  <p>Vidhi Sajnani 2020B1A71625H </p>
+  <p>Siva Naga Rajdhanush Lella 2020B3A70545H</p>
+  <p>Ramakrishna C 2020B5A72287H</p>
+  <p>Sanaatan R 2021A7PS2902H</p>
+</section>
+</html>
